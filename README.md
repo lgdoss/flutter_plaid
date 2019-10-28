@@ -1,5 +1,7 @@
 Flutter for Plaid Link
 
+based off of: https://pub.dev/packages/flutter_plaid
+But provides additional necessary functionality
 [![pub](https://img.shields.io/pub/v/flutter_plaid.svg)](https://pub.dev/packages/flutter_plaid)
 
 ## Usage

@@ -1,4 +1,4 @@
-library flutter_plaid;
+library plaid;
 
 import 'dart:convert';
 

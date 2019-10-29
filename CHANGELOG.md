@@ -13,3 +13,7 @@
 ## 0.0.4
 
 * Added clientName option to config
+
+## 1.0.0
+
+* made default product: auth

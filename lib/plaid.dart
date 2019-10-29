@@ -153,7 +153,7 @@ class Configuration {
     @required this.secret,
     @required this.clientName,
     this.webhook        = 'https://requestb.in',
-    this.products       = 'auth,income',//e.g. auth or auth,income
+    this.products       = 'auth',//e.g. auth or auth,income
     this.selectAccount  = 'true',//e.g. auth or auth,income
     this.isMobile       = 'true',
     this.apiVersion     = 'v2',

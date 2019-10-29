@@ -42,6 +42,7 @@ class _WebViewPage {
     _url = config.plaidBaseUrl +
         '?key=' +
         config.plaidPublicKey +
+        '&clientName='+ config.clientName +
         '&isWebview=' + config.isWebview +
         '&product=' + config.products +
         '&isMobile=' + config.isMobile +
@@ -150,6 +151,7 @@ class Configuration {
     @required this.environmentPlaidPathStripeToken,
     @required this.plaidClientId,
     @required this.secret,
+    @required this.clientName,
     this.webhook        = 'https://requestb.in',
     this.products       = 'auth,income',//e.g. auth or auth,income
     this.selectAccount  = 'true',//e.g. auth or auth,income
@@ -164,6 +166,7 @@ class Configuration {
   String environmentPlaidPathStripeToken;
   String plaidClientId;
   String secret;
+  String clientName;
   String webhook;
   String products;
   String selectAccount;

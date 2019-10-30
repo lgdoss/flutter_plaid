@@ -21,7 +21,12 @@ class _Example extends State {
         environmentPlaidPathStripeToken:
             'https://sandbox.plaid.com/processor/stripe/bank_account_token/create',
         plaidClientId: 'yourPlaidClientId',
-        secret: plaidSandbox ? 'yourSecret' : '');
+        secret: plaidSandbox ? 'yourSecret' : '',
+        clientName: 'ClientName',
+        webhook: 'Webhook Url,
+        products: 'auth,income',
+        selectAccount: 'false'
+        );
 
     FlutterPlaidApi flutterPlaidApi = FlutterPlaidApi(configuration);
     flutterPlaidApi.launch(context, (Result result) {

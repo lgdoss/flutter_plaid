@@ -23,7 +23,7 @@ class _Example extends State {
         plaidClientId: 'yourPlaidClientId',
         secret: plaidSandbox ? 'yourSecret' : '',
         clientName: 'ClientName',
-        webhook: 'Webhook Url,
+        webhook: 'Webhook Url',
         products: 'auth,income',
         selectAccount: 'false'
         );

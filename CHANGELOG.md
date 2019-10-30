@@ -17,3 +17,7 @@
 ## 1.0.0
 
 * made default product: auth
+
+## 1.0.1
+
+* updated readme

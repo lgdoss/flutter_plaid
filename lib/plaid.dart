@@ -76,11 +76,27 @@ class _WebViewPage {
       } else if (eventName == 'HANDOFF') {
         _closeWebView();
       }
-      final dynamic token = queryParams['public_token'];
-      final dynamic accountId = queryParams['account_id'];
+
+      final dynamic token           = queryParams['public_token'];
+      final dynamic accountId       = queryParams['account_id'];
+      final String accountType      = queryParams['account_type'];
+      final String accountSubtype   = queryParams['account_subtype'];
+      final String accountName      = queryParams['account_name'];
+      final String institutionId    = queryParams['institution_id'];
+      final String institutionName  = queryParams['institution_name'];
+
       if (token != null && accountId != null) {
         if (!_stripeToken) {
-          this._success(Result(token, accountId, queryParams));
+          this._success(Result(
+            token: token,
+            accountId: accountId,
+            accountName: accountName,
+            accountType: accountType,
+            accountSubtype: accountSubtype,
+            institutionId: institutionId,
+            institutionName: institutionName,
+            response: queryParams
+          ));
         } else {
           await _fetchStripeToken(token, accountId);
         }
@@ -116,7 +132,10 @@ class _WebViewPage {
     final stripeTokenData =
         json.decode(utf8.decode(responseStripeToken.bodyBytes));
     _success(Result(
-        stripeTokenData['stripe_bank_account_token'], null, stripeTokenData));
+      token:
+        stripeTokenData['stripe_bank_account_token'], 
+      response: stripeTokenData)
+      );
   }
 
   _closeWebView() {
@@ -176,9 +195,22 @@ class Configuration {
 }
 
 class Result {
-  Result(this.token, this.accountId, this.response);
-
+  Result({
+    @required this.response,
+    @required this.token,
+    this.accountId,
+    this.accountType,
+    this.accountSubtype,
+    this.accountName,
+    this.institutionId,
+    this.institutionName,
+  });
+  dynamic response;
   String token;
   String accountId;
-  dynamic response;
+  String accountType;
+  String accountSubtype;
+  String accountName;
+  String institutionId;
+  String institutionName;
 }

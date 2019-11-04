@@ -1,6 +1,6 @@
 name: plaid
 description: Porting of Plaid Api (https://plaid.com/docs/) to Flutter.
-version: 1.0.1
+version: 1.0.2
 author: Brian Schardt<brian.ja.schardt@gmail.com>
 homepage: https://github.com/prototype-two/flutter_plaid
 

@@ -21,3 +21,7 @@
 ## 1.0.1
 
 * updated readme
+
+## 1.0.2
+
+* return more typed info on plaid loggin like instiution name, etc.

@@ -50,7 +50,20 @@ class _WebViewPage {
         '&selectAccount=' + config.selectAccount +
         '&webhook=' + config.webhook +
         '&env=' +
-        config.plaidEnvironment;
+        config.plaidEnvironment
+        ;
+    if(config.userEmailAddress!=""){
+      _url =_url+'&userEmailAddress=' +
+          config.userEmailAddress;
+    }
+    if(config.userLegalName!=""){
+       _url =_url+'&userLegalName=' +
+          config.userLegalName;
+    }
+    if(config.isUpdateMode&&config.publicToken!=""){
+       _url =_url+'&token=' +
+          config.publicToken;
+    }
     debugPrint('init plaid: ' + _url);
   }
 
@@ -84,6 +97,7 @@ class _WebViewPage {
       final String accountName      = queryParams['account_name'];
       final String institutionId    = queryParams['institution_id'];
       final String institutionName  = queryParams['institution_name'];
+      final String verificationStatus = queryParams['verification_status'];
 
       if (token != null && accountId != null) {
         if (!_stripeToken) {
@@ -95,6 +109,7 @@ class _WebViewPage {
             accountSubtype: accountSubtype,
             institutionId: institutionId,
             institutionName: institutionName,
+            verificationStatus:verificationStatus,
             response: queryParams
           ));
         } else {
@@ -156,7 +171,7 @@ class _WebViewPage {
         return NavigationDecision.navigate;
       },
     );
-    return Scaffold(body: webView);
+    return Scaffold(body:SafeArea(child:webView));
   }
 }
 
@@ -171,12 +186,17 @@ class Configuration {
     @required this.plaidClientId,
     @required this.secret,
     @required this.clientName,
+    this.userLegalName = "",
+    this.userEmailAddress = "",
+    this.publicToken = "",
     this.webhook        = 'https://requestb.in',
     this.products       = 'auth',//e.g. auth or auth,income
     this.selectAccount  = 'true',//e.g. auth or auth,income
     this.isMobile       = 'true',
     this.apiVersion     = 'v2',
     this.isWebview      = 'true',
+    this.isUpdateMode = false
+    
   });
   String plaidPublicKey;
   String plaidBaseUrl;
@@ -192,6 +212,10 @@ class Configuration {
   String apiVersion;
   String isMobile;
   String isWebview;
+  String userLegalName;
+  String userEmailAddress;
+  String publicToken;
+  bool isUpdateMode;
 }
 
 class Result {
@@ -204,6 +228,7 @@ class Result {
     this.accountName,
     this.institutionId,
     this.institutionName,
+    this.verificationStatus,
   });
   dynamic response;
   String token;
@@ -213,4 +238,6 @@ class Result {
   String accountName;
   String institutionId;
   String institutionName;
+  String verificationStatus;
+
 }

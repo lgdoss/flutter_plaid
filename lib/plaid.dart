@@ -39,7 +39,7 @@ class _WebViewPage {
     _config = config;
     _stripeToken = stripeToken;
     _context = context;
-    _url = config.plaidBaseUrl +
+     _url = config.plaidBaseUrl +
         '?key=' +
         config.plaidPublicKey +
         '&clientName='+ config.clientName +
@@ -54,11 +54,11 @@ class _WebViewPage {
         ;
     if(config.userEmailAddress!=""){
       _url =_url+'&userEmailAddress=' +
-          config.userEmailAddress;
+          Uri.encodeQueryComponent(config.userEmailAddress);
     }
     if(config.userLegalName!=""){
        _url =_url+'&userLegalName=' +
-          config.userLegalName;
+          Uri.encodeQueryComponent(config.userLegalName);
     }
     if(config.isUpdateMode&&config.publicToken!=""){
        _url =_url+'&token=' +

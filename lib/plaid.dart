@@ -97,7 +97,7 @@ class _WebViewPage {
       final String accountName      = queryParams['account_name'];
       final String institutionId    = queryParams['institution_id'];
       final String institutionName  = queryParams['institution_name'];
-      final String verificationStatus = queryParams['verification_status'];
+      final String verificationStatus = queryParams['account_verification_status'];
 
       if (token != null && accountId != null) {
         if (!_stripeToken) {
